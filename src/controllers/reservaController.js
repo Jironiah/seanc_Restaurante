@@ -1,5 +1,5 @@
-const API_URL = 'https://app.nocodb.com/api/v2/tables/m5fbgu24cibh99r/records';
-const TOKEN = "7xFfWNqI6msCD5ZdGZ74iW2mBUqYE4P5biijelcR";
+const API_URL = 'https://app.nocodb.com/api/v2/tables/m74gdckmlefab9j/records';
+const TOKEN = "WkuovR4d2eb28XbemY9xvcXDrk8KsiGAeriC-tUp";
 
 
 // Obtenir totes les tasques

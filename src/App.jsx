@@ -1,37 +1,38 @@
 import { useState } from 'react'
-import { Navbar, Container, NavDropdown, Nav } from 'react-bootstrap';
+import { Container } from 'react-bootstrap';
+import { Routes, Route } from 'react-router-dom';
 import './App.css'
+import Header from './components/Header.jsx';
+import LandingPage from './components/LandingPage.jsx';
+import Footer from './components/Footer.jsx';
+import Carta from './content/carta.jsx';
+import Entrants from "./content/Entrants";
+import Principals from './content/Principals.jsx';
+import Postres from './content/Postres.jsx';
+import Menu from './content/Menu.jsx';
+import Reserva from './content/Reserva.jsx';
 
 function App() {
   const [count, setCount] = useState(0)
 
   return (
     <>
-      <header>
-        <Navbar expand="lg" className="bg-body-tertiary">
-          <Container>
-            <Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand>
-            <Navbar.Toggle aria-controls="basic-navbar-nav" />
-            <Navbar.Collapse id="basic-navbar-nav">
-              <Nav className="me-auto">
-                <Nav.Link href="#home">Home</Nav.Link>
-                <Nav.Link href="#link">Link</Nav.Link>
-                <NavDropdown title="Dropdown" id="basic-nav-dropdown">
-                  <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-                  <NavDropdown.Item href="#action/3.2">
-                    Another action
-                  </NavDropdown.Item>
-                  <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
-                  <NavDropdown.Divider />
-                  <NavDropdown.Item href="#action/3.4">
-                    Separated link
-                  </NavDropdown.Item>
-                </NavDropdown>
-              </Nav>
-            </Navbar.Collapse>
-          </Container>
-        </Navbar>
-      </header>
+      <Container>
+        <Header />
+        <div>
+          <Routes>
+            <Route path="/" element={<LandingPage />} />
+            <Route path="/carta" element={<Carta />} >
+              <Route path="entrants" element={<Entrants />} />
+              <Route path="principals" element={<Principals />} />
+              <Route path="postres" element={<Postres />} />
+            </Route>
+            <Route path="/menu" element={<Menu />} />
+            <Route path="/reserva" element={<Reserva />} />
+          </Routes>
+        </div>
+        <Footer />
+      </Container>
     </>
   )
 }
