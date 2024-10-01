@@ -1,4 +1,4 @@
-const API_URL = 'https://app.nocodb.com/api/v2/tables/m74gdckmlefab9j/records';
+const API_URL = 'https://app.nocodb.com/api/v2/tables/mmlfg5txuriw4d0/records';
 const TOKEN = "WkuovR4d2eb28XbemY9xvcXDrk8KsiGAeriC-tUp";
 
 
@@ -22,19 +22,19 @@ export const getTasks = () => {
 };
 
 // Afegir una nova tasca
-export const addTask = (task) => {
+export const creaContacte = (reserva) => {
     const options = {
         method: 'POST',
         headers: {
             'xc-token': TOKEN,
             'Content-Type': 'application/json',
         },
-        body: JSON.stringify(task),
+        body: JSON.stringify(reserva),
     }
     return fetch(API_URL, options)
         .then((response) => response.json())
         .catch((error) => {
-            console.error('Error afegint tasca', error);
+            console.error('Error añadiendo la reserva', error);
             throw error;
         });
 };
