@@ -22,7 +22,7 @@ export const getTasks = () => {
 };
 
 // Afegir una nova tasca
-export const creaContacte = (reserva) => {
+export const creaContacte = async (reserva) => {
     const options = {
         method: 'POST',
         headers: {
@@ -31,12 +31,13 @@ export const creaContacte = (reserva) => {
         },
         body: JSON.stringify(reserva),
     }
-    return fetch(API_URL, options)
-        .then((response) => response.json())
-        .catch((error) => {
-            console.error('Error añadiendo la reserva', error);
-            throw error;
-        });
+    try {
+        const response = await fetch(API_URL, options);
+        return await response.json();
+    } catch (error) {
+        console.error('Error añadiendo la reserva', error);
+        throw error;
+    }
 };
 
 // Obtenir una tasca per ID

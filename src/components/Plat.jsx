@@ -1,30 +1,21 @@
 import React, { useEffect, useState } from 'react';
 import { Table, Form } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
-import { getPlats, getEntrantsMenu, getPrincipalsMenu, getPostresMenu } from '../controllers/platController';
+import { getPlats } from '../controllers/platController';
 
 const Plat = (props) => {
     const [plats, setPlats] = useState([]);
-    const [menuEntrants, setMenuEntrants] = useState([]);
-    const [menuPrincipals, setMenuPrincipals] = useState([]);
-    const [menuPostres, setMenuPostres] = useState([]);
 
     useEffect(() => {
         getPlats()
-            .then((data) => setPlats(data))
-            .catch((error) => console.error('Error carregant plats', error));
+            .then((data) => {
+                // const plats = data && data.list ? data.list : [];
+                setPlats(data);
+            })
+            .catch((error) => {
+                console.error('Error carregant plats', error);
+                setPlats([]);
+            });
 
-        getEntrantsMenu()
-            .then((data) => setMenuEntrants(data))
-            .catch((error) => console.error('Error carregant plats', error));
-
-        getPrincipalsMenu()
-            .then((data) => setMenuPrincipals(data))
-            .catch((error) => console.error('Error carregant plats', error));
-
-        getPostresMenu()
-            .then((data) => setMenuPostres(data))
-            .catch((error) => console.error('Error carregant plats', error));
 
     }, []);
 
@@ -33,29 +24,36 @@ const Plat = (props) => {
             <tr key={plat.Id}>
                 <td>{plat.nom}</td>
                 <td>{plat.preu}</td>
-                <td><img src={plat.foto} width={"30px"} height={"30px"} alt={`Imagen plato ${plat.nom}`} /></td>
-                <td><Form>
-                    <Form.Check
-                        type={'checkbox'}
-                        id={plat.Id}
-                        defaultChecked={plat.menu} />
-                </Form></td>
+                <td>
+                    <img src={plat.foto} width={"55px"} height={"55px"} alt={`Imagen plato ${plat.nom}`} />
+                </td>
+                <td>
+                    <Form>
+                        <Form.Check
+                            type={'checkbox'}
+                            id={plat.Id}
+                            defaultChecked={plat.menu} />
+                    </Form>
+                </td>
                 <td>{plat.tipus}</td>
-                <td><Form>
-                    <Form.Check
-                        type={'checkbox'}
-                        id={plat.Id}
-                        defaultChecked={plat.vegetaria} />
-                </Form>
+                <td>
+                    <Form>
+                        <Form.Check
+                            type={'checkbox'}
+                            id={plat.Id}
+                            defaultChecked={plat.vegetaria} />
+                    </Form>
                 </td>
             </tr>
-        ));
+        ))
 
-    const menuFilterEntrants = menuEntrants.map(plat => (
+    const menuFilterEntrants = plats.filter(plat => plat.tipus == "entrant").filter(e => e.menu == true).map(plat => (
         <tr key={plat.Id}>
             <td>{plat.nom}</td>
             <td>{plat.preu}</td>
-            <td><img src={plat.foto} width={"30px"} height={"30px"} alt={`Imagen plato ${plat.nom}`} /></td>
+            <td>
+                <img src={plat.foto} width={"55px"} height={"55px"} alt={`Imagen plato ${plat.nom}`} />
+            </td>
             <td>
                 <Form>
                     <Form.Check
@@ -76,11 +74,14 @@ const Plat = (props) => {
         </tr>
     ));
 
-    const menuFilterPrincipals = menuPrincipals.map(plat => (
+    const menuFilterPrincipals = plats.filter(plat => plat.tipus == "principal").filter(e => e.menu == true).map(plat => (
+
         <tr key={plat.Id}>
             <td>{plat.nom}</td>
             <td>{plat.preu}</td>
-            <td><img src={plat.foto} width={"30px"} height={"30px"} alt={`Imagen plato ${plat.nom}`} /></td>
+            <td>
+                <img src={plat.foto} width={"55px"} height={"55px"} alt={`Imagen plato ${plat.nom}`} />
+            </td>
             <td>
                 <Form>
                     <Form.Check
@@ -101,11 +102,13 @@ const Plat = (props) => {
         </tr>
     ));
 
-    const menuFilterPostres = menuPostres.map(plat => (
+    const menuFilterPostres = plats.filter(plat => plat.tipus == "postre").filter(e => e.menu == true).map(plat => (
         <tr key={plat.Id}>
             <td>{plat.nom}</td>
             <td>{plat.preu}</td>
-            <td><img src={plat.foto} width={"30px"} height={"30px"} alt={`Imagen plato ${plat.nom}`} /></td>
+            <td>
+                <img src={plat.foto} width={"55px"} height={"55px"} alt={`Imagen plato ${plat.nom}`} />
+            </td>
             <td>
                 <Form>
                     <Form.Check
@@ -162,7 +165,6 @@ const Plat = (props) => {
     return (
         <div>
             <h1>Plats</h1>
-
             <Table>
                 <thead>
                     <tr>

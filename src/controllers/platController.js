@@ -1,8 +1,6 @@
-const API_URL = 'https://app.nocodb.com/api/v2/tables/m74gdckmlefab9j/records';
-const TOKEN = "WkuovR4d2eb28XbemY9xvcXDrk8KsiGAeriC-tUp";
+import { useState } from 'react';
+import { API_URL, TOKEN } from './apiConfig';
 
-
-// Obtenir totes les tasques
 export const getPlats = () => {
     const options = {
         method: 'GET',
@@ -19,6 +17,8 @@ export const getPlats = () => {
             console.error('Error obtenint plats', error);
             throw error;
         });
+
+
 };
 
 export const getEntrantsMenu = () => {
@@ -33,8 +33,11 @@ export const getEntrantsMenu = () => {
     return fetch(API_URL, options)
         .then((response) => response.json())
         .then((data) => {
-            const plats = data.list;
-            const filteredPlats = plats.filter(plat => plat.menu === true && plat.tipus === "entrant");
+            const plats = data?.list;
+            let filteredPlats = []
+            if (plats) {
+                filteredPlats = plats.filter(plat => plat.menu === true && plat.tipus === "entrant");
+            }
             return filteredPlats;
         })
         .catch((error) => {
@@ -55,8 +58,11 @@ export const getPrincipalsMenu = () => {
     return fetch(API_URL, options)
         .then((response) => response.json())
         .then((data) => {
-            const plats = data.list;
-            const filteredPlats = plats.filter(plat => plat.menu === true && plat.tipus === "principal");
+            const plats = data?.list;
+            let filteredPlats = []
+            if (plats) {
+                filteredPlats = plats.filter(plat => plat.menu === true && plat.tipus === "principal");
+            }
             return filteredPlats;
         })
         .catch((error) => {
@@ -77,8 +83,11 @@ export const getPostresMenu = () => {
     return fetch(API_URL, options)
         .then((response) => response.json())
         .then((data) => {
-            const plats = data.list;
-            const filteredPlats = plats.filter(plat => plat.menu === true && plat.tipus === "postre");
+            const plats = data?.list;
+            let filteredPlats = []
+            if (plats) {
+                filteredPlats = plats.filter(plat => plat.menu === true && plat.tipus === "postre");
+            }
             return filteredPlats;
         })
         .catch((error) => {

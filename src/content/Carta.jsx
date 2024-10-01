@@ -17,13 +17,7 @@ const Carta = () => {
             </Nav>
           </Container>
         </Navbar>
-        {/* <div>
-          <Routes>
-            <Route path="entrants" element={<Entrants />} />
-            <Route path="principals" element={<Principals />} />
-            <Route path="postres" element={<Postres />} />
-          </Routes>
-        </div> */}
+        
         <Outlet />
       </div>
     </>
