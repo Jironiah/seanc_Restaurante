@@ -3,9 +3,15 @@ import { Routes, Route, Link } from 'react-router-dom';
 import Footer from './Footer.jsx'
 
 function Header() {
+
+  const estilosTitulo = {
+
+  }
+
   return (
     <>
       <header>
+        <h1>Restaurante Cocantequera</h1>
         <Navbar bg="dark" data-bs-theme="dark">
           <Container>
             <Navbar.Brand href="/">Index</Navbar.Brand>

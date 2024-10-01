@@ -13,7 +13,6 @@ import Menu from './content/Menu.jsx';
 import Reserva from './content/Reserva.jsx';
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
     <>

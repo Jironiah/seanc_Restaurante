@@ -8,7 +8,6 @@ const Plat = (props) => {
     useEffect(() => {
         getPlats()
             .then((data) => {
-                // const plats = data && data.list ? data.list : [];
                 setPlats(data);
             })
             .catch((error) => {
@@ -27,15 +26,15 @@ const Plat = (props) => {
                 <td>
                     <img src={plat.foto} width={"55px"} height={"55px"} alt={`Imagen plato ${plat.nom}`} />
                 </td>
-                <td>
+                {/* <td>
                     <Form>
                         <Form.Check
                             type={'checkbox'}
                             id={plat.Id}
                             defaultChecked={plat.menu} />
                     </Form>
-                </td>
-                <td>{plat.tipus}</td>
+                </td> */}
+                {/* <td>{plat.tipus}</td> */}
                 <td>
                     <Form>
                         <Form.Check
@@ -54,15 +53,15 @@ const Plat = (props) => {
             <td>
                 <img src={plat.foto} width={"55px"} height={"55px"} alt={`Imagen plato ${plat.nom}`} />
             </td>
-            <td>
+            {/* <td>
                 <Form>
                     <Form.Check
                         type={'checkbox'}
                         id={plat.Id}
                         defaultChecked={plat.menu} />
                 </Form>
-            </td>
-            <td>{plat.tipus}</td>
+            </td> */}
+            {/* <td>{plat.tipus}</td> */}
             <td>
                 <Form>
                     <Form.Check
@@ -82,15 +81,15 @@ const Plat = (props) => {
             <td>
                 <img src={plat.foto} width={"55px"} height={"55px"} alt={`Imagen plato ${plat.nom}`} />
             </td>
-            <td>
+            {/* <td>
                 <Form>
                     <Form.Check
                         type={'checkbox'}
                         id={plat.Id}
                         defaultChecked={plat.menu} />
                 </Form>
-            </td>
-            <td>{plat.tipus}</td>
+            </td> */}
+            {/* <td>{plat.tipus}</td> */}
             <td>
                 <Form>
                     <Form.Check
@@ -109,15 +108,15 @@ const Plat = (props) => {
             <td>
                 <img src={plat.foto} width={"55px"} height={"55px"} alt={`Imagen plato ${plat.nom}`} />
             </td>
-            <td>
+            {/* <td>
                 <Form>
                     <Form.Check
                         type={'checkbox'}
                         id={plat.Id}
                         defaultChecked={plat.menu} />
                 </Form>
-            </td>
-            <td>{plat.tipus}</td>
+            </td> */}
+            {/* <td>{plat.tipus}</td> */}
             <td>
                 <Form>
                     <Form.Check
@@ -171,8 +170,8 @@ const Plat = (props) => {
                         <th>Nom</th>
                         <th>Preu</th>
                         <th>Foto</th>
-                        <th>Menu</th>
-                        <th>Tipus</th>
+                        {/* <th>Menu</th> */}
+                        {/* <th>Tipus</th> */}
                         <th>Vegetaria</th>
                     </tr>
                 </thead>
